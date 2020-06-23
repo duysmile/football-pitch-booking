@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Carousel, Button } from 'antd';
+import { Link } from "react-router-dom";
 import '../CSS/Home.css';
 
 export default function Home(){
@@ -21,8 +22,12 @@ export default function Home(){
             </div>
         </Carousel>
         <div className="last-car">
-            <Button type="primary" danger >For Rent</Button>
-            <Button type="primary" style={{marginLeft: 50}}>Rent</Button>
+            <Button type="primary" danger>
+                <Link to='/login' >For Rent</Link>
+            </Button>
+            <Button type="primary" style={{marginLeft: 50}}>
+                <Link to='#'>Rent</Link>
+                </Button>
         </div>
   </div>
     )
