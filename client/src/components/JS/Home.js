@@ -1,7 +1,7 @@
 import React from 'react';
 import { Carousel, Button } from 'antd';
 import { Link } from "react-router-dom";
-import '../CSS/Home.css';
+import '../CSS/Home.scss';
 
 export default function Home(){
     return(
@@ -26,7 +26,7 @@ export default function Home(){
                 <Link to='/login' >For Rent</Link>
             </Button>
             <Button type="primary" style={{marginLeft: 50}}>
-                <Link to='#'>Rent</Link>
+                <Link to='/rent'>Rent</Link>
                 </Button>
         </div>
   </div>
