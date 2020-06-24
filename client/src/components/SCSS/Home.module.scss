@@ -2,7 +2,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 700px;
+    height: 650px;
 }
 
 .ant-carousel .slick-slide {
@@ -18,27 +18,27 @@
     height: 650px;
 }
 
-.car-1{
+.car1{
     background-image: url('../../asset/images/Sân-bóng-đá-Thanh-Tùng-–-Quận-2-–-Tp-HCM.jpg');
     @include carousel();
 }
 
-.car-2{
+.car2{
     background-image: url('../../asset/images/san-bong-da-co-nhan-tao-ho-xuong-rong-1.jpg');
     @include carousel();
 }
 
-.car-3{
+.car3{
     background-image: url('../../asset/images/Sân-Bóng-Đá-Mini-Thanh-Phương.jpg');
     @include carousel();
 }
 
-.car-4{
+.car4{
     background-image: url('../../asset/images/Sân-bóng-đá-Thanh-Tùng-–-Quận-2-–-Tp-HCM.jpg');
     @include carousel(); 
 }
 
-.last-car{
+.lastCar{
     margin: 15px auto !important;
     width: 190px;
     display: flex;
