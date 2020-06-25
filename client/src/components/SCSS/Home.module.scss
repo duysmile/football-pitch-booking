@@ -1,49 +1,55 @@
-@mixin carousel {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 650px;
+body{
+    font-family: 'Montserrat', sans-serif !important;
+}
+.logo{
+    min-width: 35px;
+    max-width: 100px;
+    vertical-align: middle;
+    border-style: none;
 }
 
-.ant-carousel .slick-slide {
-    text-align: center;
-    height: 160px;
-    line-height: 160px;
-    
-    overflow: hidden;
-}
-  
-.ant-carousel .slick-list{
-    width: 100%;
-    height: 650px;
+.header{
+    margin: 0px auto 
 }
 
-.car1{
-    background-image: url('../../asset/images/Sân-bóng-đá-Thanh-Tùng-–-Quận-2-–-Tp-HCM.jpg');
-    @include carousel();
-}
-
-.car2{
-    background-image: url('../../asset/images/san-bong-da-co-nhan-tao-ho-xuong-rong-1.jpg');
-    @include carousel();
-}
-
-.car3{
-    background-image: url('../../asset/images/Sân-Bóng-Đá-Mini-Thanh-Phương.jpg');
-    @include carousel();
-}
-
-.car4{
-    background-image: url('../../asset/images/Sân-bóng-đá-Thanh-Tùng-–-Quận-2-–-Tp-HCM.jpg');
-    @include carousel(); 
-}
-
-.lastCar{
-    margin: 15px auto !important;
-    width: 190px;
+.navItem{
+    font-size: 20px;
+    line-height: 1;
+    margin-right: 30px;
+    color: #000 !important;
     display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    margin-left: 30px;
 }
 
+.navButton{
+    margin-top: -3px;
+    margin-left: 30px;
+    display: flex;
+    justify-content: center;
+}
+.button{
+    border:1px solid #3a88ec;
+    padding: 6px 40px;
+    color: #fff;
+    border-radius: 27px;
+    font-size: 20px;
+    margin-bottom: 5px;
+    background-color: #3a88ec;
+    margin-left: 40px;
+}
 
+.button:hover{
+    background-color: #ff3e81;
+    border:1px solid #ff3e81;
+}
 
+.link:hover{
+    text-decoration: none;
+    color: #ff3e81 !important;
+}
 
+.link:visited{
+    color:#000;
+}
