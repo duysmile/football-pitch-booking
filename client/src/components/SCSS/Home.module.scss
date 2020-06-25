@@ -1,5 +1,5 @@
 body{
-    font-family: 'Montserrat', sans-serif !important;
+    
 }
 .logo{
     min-width: 35px;
@@ -11,6 +11,10 @@ body{
 .header{
     margin: 0px auto 
 }
+$left : 100px;
+.navBar{
+    margin-left:$left;
+}
 
 .navItem{
     font-size: 20px;
@@ -20,12 +24,12 @@ body{
     display: flex;
     justify-content: center;
     margin-bottom: 15px;
-    margin-left: 30px;
+    margin-left: 60px;
+    font-family: 'Montserrat', sans-serif !important;
 }
 
 .navButton{
     margin-top: -3px;
-    margin-left: 30px;
     display: flex;
     justify-content: center;
 }
@@ -37,7 +41,7 @@ body{
     font-size: 20px;
     margin-bottom: 5px;
     background-color: #3a88ec;
-    margin-left: 40px;
+    margin-left: 30px;
 }
 
 .button:hover{
@@ -52,4 +56,39 @@ body{
 
 .link:visited{
     color:#000;
+}
+
+.img1{
+    max-width: 70%;
+    margin-left: $left;
+}
+
+.content{
+    font-weight: 800;
+    font-size: 3.8rem;
+    line-height: 1;
+    background-image: url();
+}
+
+.body1{
+    display: flex;
+}
+
+.headerSubtitle{
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: #212529;
+}
+
+.headerTitle{
+    font-size: 3.8rem;
+    color: #303669;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.headerTitleTest{
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #212529;
 }
