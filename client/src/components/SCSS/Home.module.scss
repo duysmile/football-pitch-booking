@@ -1,11 +1,11 @@
 body{
-    
+    font-family: 'Montserrat', sans-serif !important;
+    line-height: 1.5;
 }
 .logo{
     min-width: 35px;
     max-width: 100px;
     vertical-align: middle;
-    border-style: none;
 }
 
 .header{
@@ -59,20 +59,22 @@ $left : 100px;
 }
 
 .img1{
-    max-width: 70%;
-    margin-left: $left;
+    max-width: 90%;
+    min-width: 50% !important;
+    margin-top: 36px;
 }
 
 .content{
     font-weight: 800;
     font-size: 3.8rem;
     line-height: 1;
-    background-image: url();
+
 }
 
-.body1{
-    display: flex;
-}
+
+
+
+
 
 .headerSubtitle{
     font-size: 1.7rem;
@@ -85,10 +87,11 @@ $left : 100px;
     color: #303669;
     font-weight: 800;
     line-height: 1;
+    // margin-bottom: 17px;
 }
 
 .headerTitleTest{
-    font-size: 1.3rem;
+    font-size: 1.3em;
     font-weight: 400;
     color: #212529;
 }
