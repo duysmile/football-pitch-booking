@@ -6,7 +6,6 @@ body{
     min-width: 35px;
     max-width: 100px;
     vertical-align: middle;
-    
 }
 
 .header{
@@ -14,7 +13,7 @@ body{
     width: 80%;
     display: block;
 }
-$left : 100px;
+
 .navBar{
     margin-left:40px;
 }
@@ -96,7 +95,6 @@ $left : 100px;
 }
 
 @media (max-width: 414px){
-    
     .logo{
         margin-left:0px !important;
     }
