@@ -6,15 +6,17 @@ body{
     min-width: 35px;
     max-width: 100px;
     vertical-align: middle;
-    margin-left: 70px;
+    
 }
 
 .header{
-    margin: 0px auto 
+    margin: 0px auto !important;
+    width: 80%;
+    display: block;
 }
 $left : 100px;
 .navBar{
-    margin-left:60px;
+    margin-left:40px;
 }
 
 .navItem{

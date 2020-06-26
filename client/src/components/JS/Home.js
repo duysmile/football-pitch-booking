@@ -8,7 +8,7 @@ import '../SCSS/Home.scss'
 export default function Home(){
     return(
     <div>
-        <div className={cls.header}>
+        <div className={cls.header + " container"}>
         <Navbar bg="#fff" expand="lg">
                 <Navbar.Brand>
                     <img src={process.env.PUBLIC_URL + '/logo.jpg'} className={cls.logo} alt=""></img>
