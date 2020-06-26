@@ -3,36 +3,35 @@ import { Link } from "react-router-dom";
 import cls from '../SCSS/Head.module.scss';
 import clsB from '../SCSS/Body.module.scss';
 import { Navbar, Nav } from 'react-bootstrap';
-import '../SCSS/Home.scss'
+import '../SCSS/Home.scss';
 
 export default function Home(){
     return(
     <div>
         <div className={cls.header + " container"}>
-        <Navbar bg="#fff" expand="lg">
+            <Navbar bg="#fff" expand="lg">
                 <Navbar.Brand>
                     <img src={process.env.PUBLIC_URL + '/logo.jpg'} className={cls.logo} alt=""></img>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                <div className={cls.navBar}>
-                    <Nav className="mr-auto">
-                        <Nav.Item className={cls.navItem}>
-                            <Link className={cls.link} to='/'>Home</Link>
-                        </Nav.Item>
-                        <Nav.Item className={cls.navItem}>
-                            <Link className={cls.link} to='/rent'>Rent</Link>
+                    <div className={cls.navBar}>
+                        <Nav className="mr-auto">
+                            <Nav.Item className={cls.navItem}>
+                                <Link className={cls.link} to='/'>Home</Link>
                             </Nav.Item>
-                        <Nav.Item className={cls.navItem}>Around</Nav.Item>
-                        <Nav.Item className={cls.navItem}>Tournaments</Nav.Item>
-                        <Nav.Item className={cls.navItem}>Hired</Nav.Item>
-                        <Nav.Item className={cls.navButton}>
-                            <Link className={cls.link} to='/login' >
-                                <span className={cls.button}>Login</span>
-                            </Link>
-                        </Nav.Item>
-                       
-                    </Nav>
+                            <Nav.Item className={cls.navItem}>
+                                <Link className={cls.link} to='/rent'>Rent</Link>
+                            </Nav.Item>
+                            <Nav.Item className={cls.navItem}>Around</Nav.Item>
+                            <Nav.Item className={cls.navItem}>Tournaments</Nav.Item>
+                            <Nav.Item className={cls.navItem}>Hired</Nav.Item>
+                            <Nav.Item className={cls.navButton}>
+                                <Link className={cls.link} to='/login' >
+                                    <span className={cls.button}>Login</span>
+                                </Link>
+                            </Nav.Item>
+                        </Nav>
                     </div>
                 </Navbar.Collapse>
             </Navbar>
