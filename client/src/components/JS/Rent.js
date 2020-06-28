@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import Navbar from '../layout/Navbar';
-import { List, Avatar, Space } from 'antd';
+import cls from '../SCSS/Rent.module.scss';
+import { List, Avatar, Input } from 'antd';
+const { Search } = Input;
 
 const listData = [];
 for (let i = 0; i < 23; i++) {
@@ -21,7 +23,13 @@ export default class Rent extends Component{
       <div>
         <Navbar colorRent="#ff3e81"/>
         <div className='container'>
+        <Search className={cls.searchField}
+                        placeholder="Field's name"
+                        onKeyUp={this.onSearch} 
+                        enterButton
+                />
         <List
+    className={cls.pagina}
     itemLayout="vertical"
     size="large"
     pagination={{
