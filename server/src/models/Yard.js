@@ -1,0 +1,39 @@
+const mongoose = require('mongoose');
+const Constants = require('../common/constants');
+
+const yardSchema = new mongoose.Schema({
+    owner: {
+        type: mongoose.SchemaTypes.ObjectId,
+        required: true,
+    },
+    name: {
+        type: String,
+        minlength: 2,
+        maxlength: 1000,
+        required: true,
+    },
+    type: {
+        type: Number,
+        enum: Constants.YARD.TYPE,
+        required: true,
+    },
+    price: {
+        type: Number,
+        min: 1,
+        max: 1000,
+        required: true,
+    },
+    unit: {
+        type: Number,
+        min: 1,
+        max: 24,
+        default: 1,
+        required: true,
+    },
+}, {
+    timestamps: true,
+    collation: 'vn',
+});
+
+const Yard = mongoose.Model('Yard', yardSchema);
+module.exports = Yard;
