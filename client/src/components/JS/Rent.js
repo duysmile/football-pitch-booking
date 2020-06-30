@@ -2,19 +2,23 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import Navbar from '../layout/Navbar';
 import cls from '../SCSS/Rent.module.scss';
-import { List, Avatar, Input } from 'antd';
+import '../SCSS/Rent.scss';
+import ScrollToTop from 'react-scroll-up';
+import { List, Avatar, Input} from 'antd';
+import { CaretUpOutlined } from '@ant-design/icons';
 const { Search } = Input;
 
 const listData = [];
 for (let i = 0; i < 23; i++) {
   listData.push({
+    id: '1',
     href: 'https://ant.design',
-    title: `ant design part ${i}`,
+    title: `Thanh Long Field`,
     avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
     description:
-      'Ant Design, a design language for background applications, is refined by Ant UED Team.',
+      '7:00AM - 10:00PM',
     content:
-      'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+      '',
   });
 }
 export default class Rent extends Component{
@@ -28,6 +32,9 @@ export default class Rent extends Component{
                         onKeyUp={this.onSearch} 
                         enterButton
                 />
+        <ScrollToTop showUnder={160}>
+            <CaretUpOutlined style={{ fontSize: '40px', color: '#ff3e81' }}/>
+        </ScrollToTop>
         <List
     className={cls.pagina}
     itemLayout="vertical"
@@ -39,11 +46,6 @@ export default class Rent extends Component{
       pageSize: 3,
     }}
     dataSource={listData}
-    footer={
-      <div>
-        <b>ant design</b> footer part
-      </div>
-    }
     renderItem={item => (
       <List.Item
         key={item.title}
@@ -60,7 +62,12 @@ export default class Rent extends Component{
           title={<a href={item.href}>{item.title}</a>}
           description={item.description}
         />
-        {item.content}
+        {
+          <Link className={cls.link} to= {`/rent/` + `${item.id}`}>
+            <span className={cls.button}>Hire</span>
+          </Link>
+        }
+        
       </List.Item>
     )}
   />

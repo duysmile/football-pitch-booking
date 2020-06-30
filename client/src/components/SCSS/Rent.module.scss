@@ -1,4 +1,31 @@
-.pagina{
-    margin: 0px auto !important;
-
+$header-top: 20px;
+.searchField{
+    min-width: 105px !important;
+    max-width: 400px !important;
+    margin: $header-top  !important;
+    display: fixed !important;
 }
+
+.button{
+    border:1px solid #3a88ec;
+    padding: 6px 20px;
+    color: #fff;
+    border-radius: 27px;
+    font-size: 16px;
+    margin-bottom: 5px;
+    background-color: #3a88ec;
+    margin-left: 45px;
+    margin-top: 10px;
+}
+
+.button:hover{
+    background-color: #ff3e81;
+    border:1px solid #ff3e81;
+    text-decoration: none;
+}
+
+.link:hover{
+    text-decoration: none;
+    color: #ff3e81 !important;
+}
+
