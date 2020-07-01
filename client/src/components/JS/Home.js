@@ -8,7 +8,6 @@ import '../SCSS/Home.scss';
 export default function Home(){
     return(
     <div>
-        <Navbar />
         <div className="container d-lg-flex">
             <div className="col-lg-6 header-img-section d-lg-flex align-items-lg-center mb-5">
                 <img className={cls.img1} src={process.env.PUBLIC_URL + '/Calendar.svg'} alt=""></img>

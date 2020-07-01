@@ -25,7 +25,6 @@ export default class Rent extends Component{
   render(){
     return(
       <div>
-        <Navbar colorRent="#ff3e81"/>
         <div className='container'>
         <Search className={cls.searchField}
                         placeholder="Field's name"
