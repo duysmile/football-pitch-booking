@@ -6,6 +6,11 @@ $header-top: 20px;
     display: fixed !important;
 }
 
+.filter{
+    display: flex;
+    
+}
+
 .button{
     border:1px solid #3a88ec;
     padding: 6px 20px;
@@ -14,7 +19,7 @@ $header-top: 20px;
     font-size: 16px;
     margin-bottom: 5px;
     background-color: #3a88ec;
-    margin-left: 45px;
+    
     margin-top: 10px;
 }
 

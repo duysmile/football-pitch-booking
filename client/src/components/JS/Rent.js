@@ -4,9 +4,17 @@ import Navbar from '../layout/Navbar';
 import cls from '../SCSS/Rent.module.scss';
 import '../SCSS/Rent.scss';
 import ScrollToTop from 'react-scroll-up';
-import { List, Avatar, Input} from 'antd';
-import { CaretUpOutlined } from '@ant-design/icons';
+import { List, Avatar, Input, Space, Select} from 'antd';
+import { CaretUpOutlined, StarOutlined } from '@ant-design/icons';
 const { Search } = Input;
+const { Option } = Select;
+
+const IconText = ({ icon, text }) => (
+  <Space>
+    {React.createElement(icon)}
+    {text}
+  </Space>
+);
 
 const listData = [];
 for (let i = 0; i < 23; i++) {
@@ -22,15 +30,26 @@ for (let i = 0; i < 23; i++) {
   });
 }
 export default class Rent extends Component{
+  constructor(){
+    super();
+    this.onSearch = this.onSearch.bind(this);
+  }
+  onSearch(e){
+    let text = e.target.value;
+    console.log(text);
+  }
   render(){
     return(
       <div>
         <div className='container'>
-        <Search className={cls.searchField}
-                        placeholder="Field's name"
-                        onKeyUp={this.onSearch} 
-                        enterButton
-                />
+          <div className={cls.filter}>
+            <Search className={cls.searchField}
+                            placeholder="Field's name"
+                            onKeyUp={this.onSearch} 
+                            enterButton
+                    />
+            
+          </div>
         <ScrollToTop showUnder={160}>
             <CaretUpOutlined style={{ fontSize: '40px', color: '#ff3e81' }}/>
         </ScrollToTop>
@@ -48,6 +67,9 @@ export default class Rent extends Component{
     renderItem={item => (
       <List.Item
         key={item.title}
+        actions={[
+          <IconText icon={StarOutlined} text="156" key="list-vertical-star-o" />,
+        ]}
         extra={
           <img
             width={272}
@@ -57,7 +79,7 @@ export default class Rent extends Component{
         }
       >
         <List.Item.Meta
-          avatar={<Avatar src={item.avatar} />}
+          // avatar={<Avatar src={item.avatar} />}
           title={<a href={item.href}>{item.title}</a>}
           description={item.description}
         />
