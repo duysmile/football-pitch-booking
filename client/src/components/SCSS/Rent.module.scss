@@ -14,16 +14,16 @@ $header-top: 20px;
 .filt{
     margin-left: 30px !important;
     margin-top: 20px;
+
 }
 
 .city{
     min-width: 195px;
+    margin-right:10px !important;
+    margin-bottom: 10px !important;
 }
 
-.city1{
-    min-width: 195px;
-    margin-left: 18px !important;
-}
+
 
 
 
@@ -41,7 +41,17 @@ $header-top: 20px;
     margin-bottom: 5px;
     background-color: #3a88ec;
     margin-left: 10px;
-   
+}
+
+.buttonSearch:focus{
+    outline: none;
+}
+
+.buttonSearch:hover{
+    background-color: #ff3e81;
+    border:1px solid #ff3e81;
+    text-decoration: none;
+    color: white;
 }
 
 .button{
