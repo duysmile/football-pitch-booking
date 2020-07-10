@@ -18,7 +18,7 @@ $header-top: 20px;
 }
 
 .city{
-    min-width: 195px;
+    min-width: 168px;
     margin-right:10px !important;
     margin-bottom: 10px !important;
 }
@@ -28,7 +28,7 @@ $header-top: 20px;
 
 
 .input{
-    max-width: 354px;
+    max-width: 355px;
     
 }
 
@@ -36,11 +36,12 @@ $header-top: 20px;
     border:1px solid #3a88ec;
     padding: 6px 20px;
     color: #fff;
-    border-radius: 27px;
+    border-radius: 5px;
     font-size: 16px;
     margin-bottom: 5px;
     background-color: #3a88ec;
-    margin-left: 10px;
+    margin-left: 30px;
+    margin-top: 10px;
 }
 
 .buttonSearch:focus{

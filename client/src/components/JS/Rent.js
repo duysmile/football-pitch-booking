@@ -45,7 +45,7 @@ export default class Rent extends Component {
           <div className={cls.filter}>
             <Input placeholder="Field's name" className={cls.input}/>
             <DatePicker style={{marginLeft:10}}/>
-            <button className={cls.buttonSearch}>Search</button>
+            
           </div>
           <div className={cls.filt}>
             <Select defaultValue="City" className={cls.city}>
@@ -62,6 +62,7 @@ export default class Rent extends Component {
               <Option value="Jiangsu" className={cls.option}>11</Option>
             </Select>
           </div>
+          <button className={cls.buttonSearch}>Search</button>
           <ScrollToTop showUnder={160}>
             <CaretUpOutlined style={{ fontSize: '40px', color: '#ff3e81' }} />
           </ScrollToTop>
