@@ -44,19 +44,19 @@ export default class Rent extends Component {
         <div className='container'>
           <div className={cls.filter}>
             <Input placeholder="Field's name" className={cls.input}/>
-            <DatePicker />
-            <Button style={{backgroundColor:"blue"}}>Search</Button>
+            <DatePicker style={{marginLeft:10}}/>
+            <span className={cls.buttonSearch}>Search</span>
           </div>
           <div className={cls.filt}>
             <Select defaultValue="City" className={cls.city}>
               <Option value="HoChiMinh" className={cls.option}>Ho Chi Minh</Option>
               <Option value="Jiangsu" className={cls.option}>Da Nang</Option>
             </Select>
-            <Select defaultValue="District" className={cls.city}>
+            <Select defaultValue="District" className={cls.city1}>
               <Option value="Zhejiang" className={cls.option}>Binh Thanh</Option>
               <Option value="Jiangsu" className={cls.option}>Thu Duc</Option>
             </Select>
-            <Select defaultValue="Type" className={cls.city}>
+            <Select defaultValue="Type" className={cls.city1}>
               <Option value="Zhejiang" className={cls.option}>5</Option>
               <Option value="Jiangsu" className={cls.option}>7</Option>
               <Option value="Jiangsu" className={cls.option}>11</Option>
