@@ -7,41 +7,33 @@ $header-top: 20px;
 }
 
 .filter{
-    display: flex;
+    
     margin-left: 30px !important;
 }
 
-.filt{
-    margin-left: 30px !important;
-    margin-top: 20px;
 
-}
 
 .city{
     min-width: 168px;
-    margin-right:10px !important;
+    margin-right:20px !important;
     margin-bottom: 10px !important;
 }
 
-
-
-
-
 .input{
     max-width: 355px;
-    
+    margin-right: 20px !important;
+    margin-bottom: 10px !important;
 }
 
 .buttonSearch{
     border:1px solid #3a88ec;
-    padding: 6px 20px;
+    padding: 3px 20px;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 3px;
     font-size: 16px;
     margin-bottom: 5px;
     background-color: #3a88ec;
-    margin-left: 30px;
-    margin-top: 10px;
+  
 }
 
 .buttonSearch:focus{
@@ -79,5 +71,34 @@ $header-top: 20px;
 .link:hover{
     text-decoration: none;
     color: #ff3e81 !important;
+}
+
+.col{
+    display: block;
+
+    flex: 0 0 33.33333333%;
+    max-width: 33.33333333%;
+}
+
+
+@media(max-width: 545px){
+    .col{
+        flex: 0 0 83.33333333%;
+        max-width: 83.33333333%;
+        margin: auto;
+    }
+};
+@media(max-width: 990px){
+    .col{
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+@media(max-width: 500px){
+    .col{
+        display: block;
+        flex: 0 0 83.33333333%;
+        max-width: 83.33333333%;
+    }
 }
 

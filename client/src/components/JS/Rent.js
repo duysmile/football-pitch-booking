@@ -44,10 +44,7 @@ export default class Rent extends Component {
         <div className='container'>
           <div className={cls.filter}>
             <Input placeholder="Field's name" className={cls.input}/>
-            <DatePicker style={{marginLeft:10}}/>
-            
-          </div>
-          <div className={cls.filt}>
+            <DatePicker style={{marginRight: 20, marginBottom: 10}}/>
             <Select defaultValue="City" className={cls.city}>
               <Option value="HoChiMinh" className={cls.option}>Ho Chi Minh</Option>
               <Option value="Jiangsu" className={cls.option}>Da Nang</Option>
@@ -56,13 +53,11 @@ export default class Rent extends Component {
               <Option value="Zhejiang" className={cls.option}>Binh Thanh</Option>
               <Option value="Jiangsu" className={cls.option}>Thu Duc</Option>
             </Select>
-            <Select defaultValue="Type" className={cls.city}>
-              <Option value="Zhejiang" className={cls.option}>5</Option>
-              <Option value="Jiangsu" className={cls.option}>7</Option>
-              <Option value="Jiangsu" className={cls.option}>11</Option>
-            </Select>
+            <button className={cls.buttonSearch}>Search</button>
           </div>
-          <button className={cls.buttonSearch}>Search</button>
+
+            
+          
           <ScrollToTop showUnder={160}>
             <CaretUpOutlined style={{ fontSize: '40px', color: '#ff3e81' }} />
           </ScrollToTop>
@@ -70,7 +65,7 @@ export default class Rent extends Component {
               <Row>
                 {listData.map((item, index) =>
                 
-                  <Col span={8} style={{ padding: '2rem' }}>
+                  <Col style={{ padding: '2rem' }} className={cls.col}>
                     <Card
                       key={index}
                       style={{ width: '100%' }}
