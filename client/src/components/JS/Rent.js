@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { Card, Input, Space, Rate, Select, DatePicker, Button } from 'antd';
-
+import axios from 'axios';
 import cls from '../SCSS/Rent.module.scss';
 import '../SCSS/Rent.scss';
 import ScrollToTop from 'react-scroll-up';
@@ -29,6 +29,7 @@ for (let i = 0; i < 23; i++) {
       '',
   });
 }
+let city = [];
 export default class Rent extends Component {
   constructor() {
     super();
@@ -38,21 +39,36 @@ export default class Rent extends Component {
     let text = e.target.value;
     console.log(text);
   }
+   componentDidMount(){
+
+    axios.get('https://iszbz.sse.codesandbox.io/city')
+    .then(function (res) {
+      // handle success
+      city = Object.keys(res.data);
+    console.log(city);
+    })
+    
+  }
   render() {
     return (
       <div>
         <div className='container'>
           <div className={cls.filter}>
             <Input placeholder="Field's name" className={cls.input}/>
-            <DatePicker style={{marginRight: 20, marginBottom: 10}}/>
-            <Select defaultValue="City" className={cls.city}>
-              <Option value="HoChiMinh" className={cls.option}>Ho Chi Minh</Option>
-              <Option value="Jiangsu" className={cls.option}>Da Nang</Option>
-            </Select>
-            <Select defaultValue="District" className={cls.city}>
-              <Option value="Zhejiang" className={cls.option}>Binh Thanh</Option>
-              <Option value="Jiangsu" className={cls.option}>Thu Duc</Option>
-            </Select>
+            <DatePicker style={{marginRight: 20, marginBottom: 20}}/>
+            <div className={cls.hometown}>
+              <Select defaultValue="City" className={cls.city}>
+                {
+                  city.map((item, index) =>
+                  <Option value={item} className={cls.option}>{item}</Option>
+                 
+                )}
+              </Select>
+              <Select defaultValue="District" className={cls.city}>
+                <Option value="Zhejiang" className={cls.option}>Binh Thanh</Option>
+                <Option value="Jiangsu" className={cls.option}>Thu Duc</Option>
+              </Select>
+            </div>
             <button className={cls.buttonSearch}>Search</button>
           </div>
 

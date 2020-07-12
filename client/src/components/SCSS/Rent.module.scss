@@ -11,18 +11,20 @@ $header-top: 20px;
     margin-left: 30px !important;
 }
 
-
-
 .city{
     min-width: 168px;
     margin-right:20px !important;
-    margin-bottom: 10px !important;
+    margin-bottom: 20px !important;
+}
+
+.hometown{
+    display: inline-flex;
 }
 
 .input{
     max-width: 355px;
     margin-right: 20px !important;
-    margin-bottom: 10px !important;
+    margin-bottom: 20px !important;
 }
 
 .buttonSearch{
@@ -80,14 +82,13 @@ $header-top: 20px;
     max-width: 33.33333333%;
 }
 
-
 @media(max-width: 545px){
     .col{
         flex: 0 0 83.33333333%;
         max-width: 83.33333333%;
         margin: auto;
     }
-};
+}
 @media(max-width: 990px){
     .col{
         flex: 0 0 50%;
