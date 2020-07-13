@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import { Card, Input, Space, Rate, Select, DatePicker } from 'antd';
+import { Card, Input, Space, Rate, Select, DatePicker, Pagination } from 'antd';
 import cls from '../SCSS/Rent.module.scss';
 import '../SCSS/Rent.scss';
 import ScrollToTop from 'react-scroll-up';
@@ -59,7 +59,7 @@ export default class Rent extends Component {
     
     return (
       
-      <div>
+     
         <div className='container'>
           <div className={cls.filter}>
             <Input placeholder="Field's name" className={cls.input} onKeyUp={this.onSearch}/>
@@ -113,9 +113,9 @@ export default class Rent extends Component {
            
                 )}
               </Row>
-           
+              
+              <Pagination className={cls.page} total={50} />
         </div>
-      </div>
     )
   }
 }
