@@ -17,8 +17,8 @@ const IconText = ({ icon, text }) => (
 );
 
 let city = Object.keys(data);
-console.log(city)
-const listData = [];
+
+const listData = []; //dât get from database
 for (let i = 0; i < 23; i++) {
   listData.push({
     id: '1',
@@ -35,34 +35,41 @@ for (let i = 0; i < 23; i++) {
 export default class Rent extends Component {
   constructor() {
     super();
-    this.onSearch = this.onSearch.bind(this);
     this.state = {
-      listData: listData,
-      search: listData,
-      input: true
+      data: listData,
+      dataRender: listData.slice(0,10)
     }
+    // this.onSearch = this.onSearch.bind(this);
+    this.pagination = this.pagination.bind(this);
   }
-   onSearch(e) {
-    let text = e.target.value;
-    if(text === ''){
-      this.setState({search: this.state.listData});
-    }
-    let searched = listData.filter(function(e){
-      return e.title.toLowerCase().indexOf(text.toLowerCase()) !== -1;
-    })
-    this.setState({search: searched});
+  
+  // onSearch(e) {
+  //   let text = e.target.value;
+  //   if(text === ''){
+  //     this.setState({search: this.state.listData});
+  //   }
+  //   let searched = listData.filter(function(e){
+  //     return e.title.toLowerCase().indexOf(text.toLowerCase()) !== -1;
+  //   })
+  //   this.setState({search: searched});
 
+  // }
+
+  pagination(page,pagesize){
+    const start = (page - 1) * 10;
+    const end = page * 10;
+    const data = this.state.data.slice(start,end);
+    this.setState({dataRender: data});
   }
+  
  
  
   render() {
     
     return (
-      
-     
         <div className='container'>
           <div className={cls.filter}>
-            <Input placeholder="Field's name" className={cls.input} onKeyUp={this.onSearch}/>
+            <Input placeholder="Field's name" className={cls.input} onKeyUp/> 
             <DatePicker style={{marginRight: 20, marginBottom: 20}}/>
             <div className={cls.hometown}>
               <Select defaultValue="City" className={cls.city}>
@@ -88,7 +95,7 @@ export default class Rent extends Component {
             <CaretUpOutlined style={{ fontSize: '40px', color: '#ff3e81' }} />
           </ScrollToTop>
               <Row>
-                {this.state.search.map((item, index) =>
+                {this.state.dataRender.map((item, index) =>
                 
                   <Col style={{ padding: '2rem' }} className={cls.col}>
                     <Card
@@ -114,7 +121,7 @@ export default class Rent extends Component {
                 )}
               </Row>
               
-              <Pagination className={cls.page} total={50} />
+              <Pagination className={cls.page} total={listData.length} pageSize={10} onChange={this.pagination} />
         </div>
     )
   }
