@@ -16,9 +16,11 @@ const IconText = ({ icon, text }) => (
   </Space>
 );
 
-let city = Object.keys(data);
+const city = Object.keys(data);
+const district = Object.values(data);
 
-const listData = []; //dât get from database
+
+const listData = []; //data get from database
 for (let i = 0; i < 23; i++) {
   listData.push({
     id: '1',
@@ -29,6 +31,8 @@ for (let i = 0; i < 23; i++) {
       '7:00AM - 10:00PM',
     content:
       '',
+    city: 'Ho Chi Minh',
+    district: 'Thu Duc'
   });
 }
 
@@ -37,28 +41,50 @@ export default class Rent extends Component {
     super();
     this.state = {
       data: listData,
-      dataRender: listData.slice(0,10)
+      dataSearch: listData,
+      dataRender: listData.slice(0,10), //pagination
+      district: [],
+      districtSelect: '',
+      citySelect: ''
     }
-    // this.onSearch = this.onSearch.bind(this);
+    this.onSearch = this.onSearch.bind(this);
     this.pagination = this.pagination.bind(this);
+    this.selectCity = this.selectCity.bind(this);
+    this.selectDistrict = this.selectDistrict.bind(this);
+    this.click = this.click.bind(this);
   }
   
-  // onSearch(e) {
-  //   let text = e.target.value;
-  //   if(text === ''){
-  //     this.setState({search: this.state.listData});
-  //   }
-  //   let searched = listData.filter(function(e){
-  //     return e.title.toLowerCase().indexOf(text.toLowerCase()) !== -1;
-  //   })
-  //   this.setState({search: searched});
+  onSearch(e) {
+    const text = e.target.value;
+    const citySelect = this.state.citySelect;
+    const disSelect = this.state.districtSelect;
+    if(!citySelect){
+      let render = this.state.data.filter(function(e){
+        return e.title.toLowerCase().indexOf(text.toLowerCase()) !== -1;
+      })
+      this.setState({dataSearch: render});
+    }
 
-  // }
+  }
+
+  selectCity(e){
+    this.setState({district: district[e], citySelect: city[e]})
+  }
+
+  selectDistrict(e){
+    this.setState({districtSelect: e});
+  }
+
+  click(){
+
+  }
+
+
 
   pagination(page,pagesize){
     const start = (page - 1) * 10;
     const end = page * 10;
-    const data = this.state.data.slice(start,end);
+    const data = this.state.dataSearch.slice(start,end);
     this.setState({dataRender: data});
   }
   
@@ -69,24 +95,29 @@ export default class Rent extends Component {
     return (
         <div className='container'>
           <div className={cls.filter}>
-            <Input placeholder="Field's name" className={cls.input} onKeyUp/> 
+            <Input placeholder="Field's name" className={cls.input} onKeyUp={this.onSearch}/> 
             <DatePicker style={{marginRight: 20, marginBottom: 20}}/>
             <div className={cls.hometown}>
-              <Select defaultValue="City" className={cls.city}>
+              <Select defaultValue="City" className={cls.city} onChange={this.selectCity}>
                 {
                   city.map((item, index) => 
                     
-                      <Option key={index} value={item} className={cls.option}>{item}</Option>
+                      <Option key={index} value={index} className={cls.option}>{item}</Option>
  
                   )
                 }
               </Select>
-              <Select defaultValue="District" className={cls.city}>
-                <Option value="Zhejiang" className={cls.option}>Binh Thanh</Option>
-                <Option value="Jiangsu" className={cls.option}>Thu Duc</Option>
+              <Select defaultValue="District" className={cls.city} onChange={this.selectDistrict}>
+                {
+                  this.state.district.map((item, index) => 
+
+                    <Option value={item} className={cls.option}>{item}</Option>
+                  
+                  )
+                }
               </Select>
             </div>
-            <button className={cls.buttonSearch}>Search</button>
+            <button className={cls.buttonSearch} onClick={this.click}>Search</button>
           </div>
 
             
