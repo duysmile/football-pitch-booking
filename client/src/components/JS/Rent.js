@@ -21,7 +21,7 @@ const district = Object.values(data);
 
 
 const listData = []; //data get from database
-for (let i = 0; i < 23; i++) {
+for (let i = 0; i < 50; i++) {
   listData.push({
     id: '1',
     href: 'https://ant.design',
@@ -42,10 +42,12 @@ export default class Rent extends Component {
     this.state = {
       data: listData,
       dataSearch: listData,
-      dataRender: listData.slice(0,10), //pagination
+      dataRender: listData.slice(0,12), //pagination
       district: [],
       districtSelect: '',
-      citySelect: ''
+      citySelect: '',
+      fieldName: '',
+      rs: false
     }
     this.onSearch = this.onSearch.bind(this);
     this.pagination = this.pagination.bind(this);
@@ -56,15 +58,7 @@ export default class Rent extends Component {
   
   onSearch(e) {
     const text = e.target.value;
-    const citySelect = this.state.citySelect;
-    const disSelect = this.state.districtSelect;
-    if(!citySelect){
-      let render = this.state.data.filter(function(e){
-        return e.title.toLowerCase().indexOf(text.toLowerCase()) !== -1;
-      })
-      this.setState({dataSearch: render});
-    }
-
+    this.setState({fieldName: text});
   }
 
   selectCity(e){
@@ -76,14 +70,32 @@ export default class Rent extends Component {
   }
 
   click(){
-
+      const citySelect = this.state.citySelect;
+      const disSelect = this.state.districtSelect;
+      const name = this.state.fieldName;
+      let newData = this.state.data.filter(function(x){
+        return x.title.toLowerCase().indexOf(name.toLowerCase()) !== -1;
+      })
+      newData = newData.filter(function(x){
+        return x.city.indexOf(citySelect) !== -1;
+      })
+      newData = newData.filter(function(x){
+        return x.district.indexOf(disSelect) !== -1;
+      })
+      if(!newData.length){
+        this.setState({rs: true});
+      }else{
+        this.setState({rs: false});
+      }
+      this.setState({dataRender:newData});
+      
   }
 
 
 
   pagination(page,pagesize){
-    const start = (page - 1) * 10;
-    const end = page * 10;
+    const start = (page - 1) * 12;
+    const end = page * 12;
     const data = this.state.dataSearch.slice(start,end);
     this.setState({dataRender: data});
   }
@@ -125,6 +137,10 @@ export default class Rent extends Component {
           <ScrollToTop showUnder={160}>
             <CaretUpOutlined style={{ fontSize: '40px', color: '#ff3e81' }} />
           </ScrollToTop>
+                {
+                  this.state.rs && 
+                  <p style={{marginLeft:30, fontSize:20}}>Found 0 result</p>
+                }
               <Row>
                 {this.state.dataRender.map((item, index) =>
                 
@@ -152,7 +168,7 @@ export default class Rent extends Component {
                 )}
               </Row>
               
-              <Pagination className={cls.page} total={listData.length} pageSize={10} onChange={this.pagination} />
+              <Pagination className={cls.page} total={listData.length} pageSize={12} onChange={this.pagination} />
         </div>
     )
   }
