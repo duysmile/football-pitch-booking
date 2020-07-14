@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 const fieldRoute = require('./routes/field.route');
+const authRoute = require('./routes/auth.route');
 
 const port = process.env.PORT || 3000;
 const mongoConnection = process.env.MONGO_CONNECTION || 'mongodb://localhost:27017/test';
@@ -17,6 +18,7 @@ app.use(cors({
 app.use(morgan('dev'));
 
 app.use(fieldRoute);
+app.use(authRoute);
 
 app.use((err, req, res, next) => {
   console.error(err);
