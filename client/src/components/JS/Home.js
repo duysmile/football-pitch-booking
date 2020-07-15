@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import cls from '../SCSS/Head.module.scss';
 import clsB from '../SCSS/Body.module.scss';
-import Navbar from '../layout/Navbar';
+
 import '../SCSS/Home.scss';
 
 export default function Home(){
