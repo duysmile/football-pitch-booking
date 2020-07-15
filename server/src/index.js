@@ -1,7 +1,15 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = 3000;
+const mongoose = require("mongoose");
+const fieldRoute = require("./routes/field.route");
+var cors = require("cors");
 
-app.listen(port, () => {
-  console.log("App listening on port", port);
+mongoose.connect(process.env.MONGO_URL);
+app.use(cors());
+
+app.listen((req, res) => {
+  console.log("App listening");
 });
+
+app.use("/field", fieldRoute);
