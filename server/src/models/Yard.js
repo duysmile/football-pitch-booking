@@ -5,6 +5,7 @@ const yardSchema = new mongoose.Schema({
     owner: {
         type: mongoose.SchemaTypes.ObjectId,
         required: true,
+        ref: 'User',
     },
     name: {
         type: String,
@@ -23,6 +24,11 @@ const yardSchema = new mongoose.Schema({
         max: 1000,
         required: true,
     },
+    field: {
+        type: mongoose.SchemaTypes.ObjectId,
+        required: true,
+        ref: 'Field',
+    },
     unit: {
         type: Number,
         min: 1,
@@ -30,10 +36,13 @@ const yardSchema = new mongoose.Schema({
         default: 1,
         required: true,
     },
+    deletedAt: {
+        type: Date,
+    },
 }, {
     timestamps: true,
     collation: 'vn',
 });
 
-const Yard = mongoose.Model('Yard', yardSchema);
+const Yard = mongoose.model('Yard', yardSchema);
 module.exports = Yard;

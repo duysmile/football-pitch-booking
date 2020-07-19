@@ -29,5 +29,5 @@ exports.register = (req, res, next) => {
         return next(new Error('Password must match password confirmation'));
     }
 
-    return
+    return next();
 };

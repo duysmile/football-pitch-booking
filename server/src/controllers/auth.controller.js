@@ -1,6 +1,7 @@
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
 const User = require('../models/User');
+
+const { hashPassword, comparePassword } = require('../helpers/handle-password');
+const { generateToken } = require('../helpers/handle-token');
 
 exports.login = async (req, res, next) => {
     try {
@@ -11,15 +12,15 @@ exports.login = async (req, res, next) => {
         }).select('password');
 
         if (!existUser) {
-            throw new Error('Username is not existed');
+            return next(new Error('Username is not existed'));
         }
 
-        const isMatchPassword = bcrypt.compareSync(password, existUser.password);
+        const isMatchPassword = comparePassword(password, existUser.password);
         if (!isMatchPassword) {
-            throw new Error('Password is incorrect');
+            return next(new Error('Password is incorrect'));
         }
 
-        const token = jwt.sign({
+        const token = generateToken({
             _id: existUser._id,
         });
 
@@ -36,15 +37,16 @@ exports.register = async (req, res, next) => {
             username,
         });
         if (existUser) {
-            throw new Error('Username exists');
+            return next(new Error('Username exists'));
         }
 
-        const hashPassword = bcrypt.hashSync(password, 2);
+        const hash = hashPassword(password);
         const newUser = await User.create({
             username,
-            password: hashPassword,
+            password: hash,
         });
 
+        delete newUser.password;
         return res.json(newUser);
     } catch (error) {
         next(error);

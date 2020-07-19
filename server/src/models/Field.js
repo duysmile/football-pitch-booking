@@ -4,6 +4,7 @@ const fieldSchema = new mongoose.Schema({
     owner: {
         type: mongoose.SchemaTypes.ObjectId,
         required: true,
+        ref: 'User',
     },
     name: {
         type: String,
@@ -22,10 +23,13 @@ const fieldSchema = new mongoose.Schema({
         min: 0,
         max: 100,
     },
+    deletedAt: {
+        type: Date,
+    },
 }, {
     timestamps: true,
     collation: 'vn',
 });
 
-const Field = mongoose.Model('Field', fieldSchema);
+const Field = mongoose.model('Field', fieldSchema);
 module.exports = Field;

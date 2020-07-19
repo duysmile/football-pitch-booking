@@ -7,6 +7,7 @@ const app = express();
 
 const fieldRoute = require('./routes/field.route');
 const authRoute = require('./routes/auth.route');
+const yardRoute = require('./routes/yard.route');
 
 const port = process.env.PORT || 3000;
 const mongoConnection = process.env.MONGO_CONNECTION || 'mongodb://localhost:27017/test';
@@ -19,12 +20,13 @@ app.use(morgan('dev'));
 
 app.use(fieldRoute);
 app.use(authRoute);
+app.use(yardRoute);
 
 app.use((err, req, res, next) => {
   console.error(err);
-  const statusCode = res.status || 400;
-  const message = res.message || 'Opps, something went wrong';
-  return res.status(statusCode).json(message);
+  const statusCode = err.statusCode || 400;
+  const message = err.message || 'Opps, something went wrong';
+  return res.status(statusCode).json({ message });
 });
 
 mongoose.connect(mongoConnection, {
