@@ -1,12 +1,16 @@
 import { Route } from 'react-router-dom';
 import React from 'react';
 
-const publicRoute = ({component: Component, ...rest}) => {
+const publicRoute = ({color, component: Component, layout: Layout, ...rest}) => {
     return(
         <Route
             {...rest}
             render={props =>{
-                return <Component {...props} />
+                return(
+                    <Layout color={color}>
+                     <Component {...props} />
+                    </Layout>
+                )
             }}
         />
     );
