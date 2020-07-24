@@ -1,24 +1,23 @@
 import React from 'react';
-import { Form, Input, Button } from 'antd';
+import { useHistory, Link } from 'react-router-dom';
+import { Form, Input, Button, message } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import '../SCSS/login.scss';
 
-const layout = {
-  labelCol: {
-    span: 8,
-  },
-  wrapperCol: {
-    span: 8,
-  },
-};
-const tailLayout = {
-  wrapperCol: {
-    offset: 8,
-    span: 24,
-  },
-};
+import axios from '../../services/http';
 
 const Login = () => {
-  const onFinish = values => {
-    console.log('Success:', values);
+  const history = useHistory();
+  const onFinish = async ({ username, password }) => {
+    try {
+      const res = await axios.post('/login', { username, password });
+      const token = res.data.token;
+      axios.defaults.headers.common['x-access-token'] = token;
+      localStorage.setItem('accessToken', token);
+      history.push('/admin');
+    } catch (error) {
+      message.error(error.response.data.message);
+    }
   };
 
   const onFinishFailed = errorInfo => {
@@ -26,47 +25,34 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container d-flex justify-content-center">
       <Form
-        className="w-100"
-        {...layout}
-        name="basic"
-        initialValues={{
-          remember: true,
-        }}
+        className="w-50"
+        name="normal_login"
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
         <Form.Item
-          label="Username"
           name="username"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your username!',
-            },
-          ]}
+          rules={[{ required: true, message: 'Please input your Username!' }]}
         >
-          <Input />
+          <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
         </Form.Item>
-
         <Form.Item
-          label="Password"
           name="password"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your password!',
-            },
-          ]}
+          rules={[{ required: true, message: 'Please input your Password!' }]}
         >
-          <Input.Password />
+          <Input.Password
+            prefix={<LockOutlined className="site-form-item-icon" />}
+            placeholder="Password"
+          />
         </Form.Item>
 
-        <Form.Item {...tailLayout}>
-          <Button type="primary" htmlType="submit">
-            Submit
-        </Button>
+        <Form.Item>
+          <Button type="primary" htmlType="submit" className="login-form-button">
+            Log in
+          </Button>
+          Or <Link to="/register">register now!</Link>
         </Form.Item>
       </Form>
     </div>

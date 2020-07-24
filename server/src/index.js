@@ -9,7 +9,7 @@ const fieldRoute = require('./routes/field.route');
 const authRoute = require('./routes/auth.route');
 const yardRoute = require('./routes/yard.route');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 const mongoConnection = process.env.MONGO_CONNECTION || 'mongodb://localhost:27017/test';
 
 app.use(express.json());
@@ -32,6 +32,7 @@ app.use((err, req, res, next) => {
 mongoose.connect(mongoConnection, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true,
 }).then(connection => {
   app.listen(port, () => {
     console.log('App listening on port', port);

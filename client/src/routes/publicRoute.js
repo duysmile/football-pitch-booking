@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import React from 'react';
 
 const publicRoute = ({ color, component: Component, layout: Layout, ...rest }) => {
@@ -6,6 +6,10 @@ const publicRoute = ({ color, component: Component, layout: Layout, ...rest }) =
         <Route
             {...rest}
             render={props => {
+                const token = localStorage.getItem('accessToken');
+                if (token) {
+                    return <Redirect to="/admin" />;
+                }
                 if (!Layout) {
                     return <Component {...props} />;
                 }
