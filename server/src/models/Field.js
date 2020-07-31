@@ -28,7 +28,9 @@ const fieldSchema = new mongoose.Schema({
     },
 }, {
     timestamps: true,
-    collation: 'vn',
+    collation: {
+        locale: 'vi',
+    },
 });
 
 const Field = mongoose.model('Field', fieldSchema);

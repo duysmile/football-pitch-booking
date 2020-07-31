@@ -41,7 +41,9 @@ const yardSchema = new mongoose.Schema({
     },
 }, {
     timestamps: true,
-    collation: 'vn',
+    collation: {
+        locale: 'vi',
+    },
 });
 
 const Yard = mongoose.model('Yard', yardSchema);

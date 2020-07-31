@@ -19,7 +19,9 @@ const userSchema = new mongoose.Schema({
     },
 }, {
     timestamps: true,
-    collation: 'vn',
+    collation: {
+        locale: 'vi',
+    },
 });
 
 const User = mongoose.model('User', userSchema);
