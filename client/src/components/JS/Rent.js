@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { Link } from "react-router-dom";
 import { Card, Input, Space, Rate, Select, DatePicker, Pagination } from 'antd';
 import cls from '../SCSS/Rent.module.scss';
@@ -20,29 +21,15 @@ const city = Object.keys(data);
 const district = Object.values(data);
 
 
-const listData = []; //data get from database
-for (let i = 0; i < 50; i++) {
-  listData.push({
-    id: '1',
-    href: 'https://ant.design',
-    title: `Thanh Long Field`,
-    avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    description:
-      '7:00AM - 10:00PM',
-    content:
-      '',
-    city: 'Ho Chi Minh',
-    district: 'Thu Duc'
-  });
-}
+let listData = []; //data get from database
 
 export default class Rent extends Component {
   constructor() {
     super();
     this.state = {
-      data: listData,
-      dataSearch: listData,
-      dataRender: listData.slice(0,12), //pagination
+      data: [],
+      dataSearch: [],
+      dataRender: [], //pagination
       district: [],
       districtSelect: '',
       citySelect: '',
@@ -59,6 +46,12 @@ export default class Rent extends Component {
   onSearch(e) {
     const text = e.target.value;
     this.setState({fieldName: text});
+  }
+
+  async componentDidMount() {
+    const data = await (await axios.get('https://30ywk.sse.codesandbox.io/field')).data;
+    const dataRender = data.slice(0,12);
+    this.setState({data: data, dataRender: dataRender});
   }
 
   selectCity(e){
@@ -151,11 +144,11 @@ export default class Rent extends Component {
                       cover={<img alt="example" src="https://static.vecteezy.com/system/resources/previews/000/182/533/non_2x/jumbotron-at-soccer-stadium-vector.jpg" />}
                     >
                       <h5>
-                        {item.title}
+                        {item.name}
                       </h5>
                       <Rate disabled defaultValue={2} style={{fontSize: '0.75rem'}} />
                       <p>
-                        {item.description}
+                       {item.timeStart} - {item.timeEnd}
                       </p>
                       <div style={{ width: '100%' }}>
                         <Link className={cls.button} to={`/rent/` + `${item.id}`}>
